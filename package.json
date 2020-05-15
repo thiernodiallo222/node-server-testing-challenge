@@ -4,11 +4,11 @@
   "description": "Node Server Testing Challenge",
   "main": "server.js",
   "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
     "test": "jest --watch"
   },
   "jest": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
     "testEnvironment": "node"
   },
   "repository": {

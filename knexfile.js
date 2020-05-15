@@ -9,7 +9,7 @@ module.exports = {
     }
   },
     migrations: {
-      tableName: 'knex_migrations'
+      directory: '../node-server-testing-challenge/migrations'
   },
     seeds: {
 			directory: "./seeds",

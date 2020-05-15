@@ -1,8 +1,7 @@
-const express = require('express');
-const server = express();
+const server = require('./server');
 
-server.get('/', (req, res) => {
-    res.json(`Welcome to my awesome database of project !`)
-})
+const PORT = process.env.PORT || 5000;
 
-module.exports = server;
+server.listen(PORT, () => {
+  console.log(`Listening on at: http://localhost:${PORT}/`);
+});
