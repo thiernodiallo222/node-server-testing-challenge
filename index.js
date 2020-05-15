@@ -1,7 +1,33 @@
-const server = require('./server');
 
-const PORT = process.env.PORT || 5000;
+const express = require("express")
+const cors = require("cors")
+const studentsRouter = require("./api/student-router")
 
-server.listen(PORT, () => {
-  console.log(`Listening on at: http://localhost:${PORT}/`);
-});
+const server = express()
+const port = process.env.PORT || 5000
+
+server.use(cors())
+server.use(express.json())
+
+server.use("/students", studentsRouter)
+
+server.get("/", (req, res) => {
+	res.json({
+		message: "Welcome to our API",
+	})
+})
+
+server.use((err, req, res, next) => {
+	console.log(err)
+	res.status(500).json({
+		message: "Something went wrong",
+	})
+})
+
+if (!module.parent) {
+	server.listen(port, () => {
+		console.log(`Running at http://localhost:${port}`)
+	})
+}
+
+module.exports = server

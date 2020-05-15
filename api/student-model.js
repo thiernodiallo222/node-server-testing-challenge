@@ -1,7 +1,7 @@
   
 const db = require("../database/config");
 
-function get() {
+function getById() {
   return db("students").select("id", "Name");
 }
 
@@ -15,12 +15,6 @@ async function add(student) {
   return getById(id);
 }
 
-// function getById(id) {
-//   return db("students")
-//     .where({ id })
-//     .first();
-// }
-
 function remove(id) {
   return db("students").where("id", id).del();
 }
@@ -28,7 +22,6 @@ function remove(id) {
 module.exports = {
   add,
   get,
-  getBy,
   getById,
   remove,
 };

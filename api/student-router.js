@@ -10,11 +10,10 @@ router.post('/', async (req, res, next) => {
        const payload = {
       name: req.body.Name,
       Major: req.body.Major,
-      
        }
      const created = await students.add(payload)
       if (created) {
-        res.status(200).json(created);
+        res.status(201).json(created);
       }
  res.status(500).json({ message: 'Failed to create new student' });
     }    
@@ -42,7 +41,7 @@ router.delete('/:id', (req, res) => {
             if (!student) {
                 res.status(400).json({message: "Cannot find specific student !"})
             } else {
-                res.status(200).json({message: `student has been removed successfully !`})
+                res.status(200).json({message: `Student has been removed successfully !`})
             }
         })
         .catch(error => {
